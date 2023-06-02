@@ -1,76 +1,33 @@
-/* Leetcode  Submission    (189. Rotate Array) */
+/* Leetcode  Submission    (26. Remove Duplicates from Sorted Array) */
 
-/* Problem Statement: Given an integer array nums, rotate the array to the right by k steps, where k is non-negative. */
+/* Problem Statement: Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place 
+such that each unique element appears only once. The relative order of the elements should be kept the same. 
+Then return the number of unique elements in nums.
+Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
+Change the array nums such that the first k elements of nums contain the unique elements in the order they 
+were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
+Return k. */
 
 
 /* Solution: 1  */
 // Time Complexity: O(N)
-// Space Complexity: O(N)  
-
-
-// class Solution {
-// public:
-//     void rotate(vector<int>& nums, int k) {
-//         int n = nums.size();
-//         vector<int> temp;
-//         k = k % n;
-//         for(int i = n - k; i < n; i++){
-//             temp.push_back(nums[i]);
-//         }
-//         for(int i = 0; i < n - k; i++){
-//             temp.push_back(nums[i]);
-//         }
-
-//         for(int i = 0; i < n; i++){
-//             nums[i] = temp[i];
-//         }
-//     }
-// };
-
-
-/* Solution: 2  */
-// Time Complexity: O(N)
 // Space Complexity: O(1)  
 
 
 // class Solution {
 // public:
-//     void rotate(vector<int>& nums, int k) {
-//         int n = nums.size();
-//         k = k % n;
-
-//         // Reverse first n-k elements
-//         reverse(nums.begin(), nums.begin() + (n - k));
-//         // Reverse last k elements
-//         reverse(nums.begin() + (n - k), nums.end());
-//         // Reverse whole array
-//         reverse(nums.begin(), nums.end());
+//     int removeDuplicates(vector<int>& nums) {
+//         if(nums.size() == 0){
+//             return 0;
+//         }
+//         int left = 0;
+//         for(int right = 1; right < nums.size(); right++){
+//             if(nums[left] != nums[right]){
+//                 left++;
+//                 nums[left] = nums[right];
+//             }
+//         }
+        
+//         return left+1;
 //     }
-// };
-
-
-
-/* GFG  Submission    (Quick Left Rotation) */
-
-/* Problem Statement: Given an array arr[] of size N and an integer K, the task is to left rotate the array K indexes */
-
-
-/* Solution: */
-// Time Complexity: O(N)
-// Space Complexity: O(1)  
-
-
-// class Solution{
-// 	public:
-// 	void leftRotate(int arr[], int k, int n) 
-// 	{
-// 	   k = k % n;
-	   
-// 	   // Reverse first k elements
-// 	   reverse(arr, arr + k);
-// 	   // Reverse last n-k elements
-// 	   reverse(arr + k, arr + n);
-// 	   // Reverse whole array
-// 	   reverse(arr, arr + n);
-// 	} 
 // };
