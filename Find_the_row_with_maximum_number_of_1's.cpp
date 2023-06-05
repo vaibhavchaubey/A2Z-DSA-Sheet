@@ -4,61 +4,32 @@
 Find the 0-based index of the first row that has the maximum number of 1's. */
 
 
-/* Solution 1: */
-// Time Complexity: O(M + N)
+/* Solution: */
+// Time Complexity: O(N + M)
 // Space Complexity: O(1) 
 
 
-// class Solution {
+// class Solution{
 // public:
-//     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-//         int m = matrix.size(), n = matrix[0].size();
-//         int r = 0, c = n-1;
-//         while(r < m && c >= 0){
-//             if(matrix[r][c] == target){
-//                 return true;
-//             }
-//             else if(matrix[r][c] > target){
-//                 c--;
-//             }
-//             else{
-//                 r++;
-//             }
-//         }
+// 	int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
+// 	    int r = 0, c = m-1;
+// 	    int index = -1;
+// 	    while(r < n && c >= 0){
+// 	        int count = 0;         // to check whether a row has more 1's than previous
+// 	        if(arr[r][c] == 1){
+// 	            count++;
+// 	            c--;
+// 	        }
+// 	        else{
+// 	            r++;
+// 	        }
+// 	        // if the present row has more 1's than previous
+// 	        if(count == 1){
+// 	            index = r;
+// 	        }
+// 	    }
+	    
+// 	    return index;
+// 	}
 
-//         return false;
-//     }
 // };
-
-
-
-/* Solution 2: Binary Search */
-// Time Complexity: O(log(M * N))
-// Space Complexity: O(1) 
-
-
-// class Solution {
-// public:
-//     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-//         int m = matrix.size(), n = matrix[0].size();
-//         int lo = 0, hi = m*n-1;
-//         while(lo <= hi){
-//             int mid = lo + (hi - lo)/2;
-//             // We can get the element at middle index using matrix[middle/col][middle%col]
-//             int r = mid/n, c = mid%n;
-//             if(matrix[r][c] == target){
-//                 return true;
-//             }
-//             else if(matrix[r][c] < target){
-//                 lo = mid + 1;
-//             }
-//             else{
-//                 hi = mid - 1;
-//             }
-//         }
-        
-//         return false;
-//     }
-// };
-
-
