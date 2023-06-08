@@ -46,12 +46,16 @@ You must write an algorithm that runs in O(n) time.  */
 // class Solution {
 // public:
 //     int longestConsecutive(vector<int>& nums) {
+//         if(nums.size() == 0){
+//             return 0;
+//         }
+
 //         unordered_set<int> s;
 //         for(auto num : nums){
 //             s.insert(num);
 //         }
         
-//         int longestStreak = 0; 
+//         int longestStreak = 1; 
 //         for(auto num : nums){
 //             if(!s.count(num-1)){        //number lesser than num exists or not
 //                 int currentNum = num;
@@ -67,4 +71,3 @@ You must write an algorithm that runs in O(n) time.  */
 //         return longestStreak;
 //     }
 // };
-
