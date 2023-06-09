@@ -1,124 +1,38 @@
-/* Problem Statement: Given two sorted arrays arr1[] and arr2[] of sizes n and m in non-decreasing order. 
-Merge them in sorted order without using any extra space. Modify arr1 so that it contains the first N elements 
-and modify arr2 so that it contains the last M elements. */
+#include <bits/stdc++.h>
+using namespace std;
 
+int getLongestSubarray(vector<int>& a, long long k) {
+    int n = a.size(); // size of the array.
 
-/* GFG  Submission    (88. Merge Sorted Array) */
+    int left = 0, right = 0; // 2 pointers
+    long long sum = a[0];
+    int maxLen = 0;
+    while (right < n) {
+        // if sum > k, reduce the subarray from left
+        // until sum becomes less or equal to k:
+        while (left <= right && sum > k) {
+            sum -= a[left];
+            left++;
+        }
 
+        // if sum = k, update the maxLen i.e. answer:
+        if (sum == k) {
+            maxLen = max(maxLen, right - left + 1);
+        }
 
-/* Solution 1: Brute Force   */
-// Time Complexity: O(n + m) + O(n + m)
-// Space Complexity: O(n + m)
+        // Move forward thw right pointer:
+        right++;
+        if (right < n) sum += a[right];
+    }
 
+    return maxLen;
+}
 
-// class Solution{
-//     public:
-//         //Function to merge the arrays.
-//         void merge(long long arr1[], long long arr2[], int n, int m) 
-//         { 
-//             vector<long long> temp;
-//             int i = 0, j = 0;
-//             while(i < n && j < m){
-//                 if(arr1[i] < arr2[j]){
-//                     temp.push_back(arr1[i]);
-//                     i++;
-//                 }
-//                 else{
-//                     temp.push_back(arr2[j]);
-//                     j++;
-//                 }
-//             }
-    
-//             while(i < n){
-//                 temp.push_back(arr1[i]);
-//                 i++;
-//             }
-    
-//             while(j < m){
-//                 temp.push_back(arr2[j]);
-//                 j++;
-//             }
-            
-//             for(int i = 0; i < n+m; i++){
-//                 if(i < n){
-//                     arr1[i] = temp[i];
-//                 }
-//                 else{
-//                     arr2[i-n] = temp[i];
-//                 }
-//             }
-//         }
-// };
-
-
-
-
-    
-/* Solution 2: Optimal Solution 1 */
-// Time Complexity: O(min(n, m)) + O(n Log n) + O(m Log m)
-// Space Complexity: O(1) 
-
-
-// class Solution{
-//     public:
-//         //Function to merge the arrays.
-//         void merge(long long arr1[], long long arr2[], int n, int m) 
-//         { 
-//             int i = n-1, j = 0;
-//             while(i >= 0 && j < m){
-//                 if(arr1[i] > arr2[j]){
-//                     swap(arr1[i], arr2[j]);
-//                     i--; j++;
-//                 }
-//                 else{
-//                     break;
-//                 }
-//             }
-            
-//             sort(arr1, arr1 + n);
-//             sort(arr2, arr2 + m);
-//         } 
-// };
-
-
-
-
-/* Solution 3: Optimal Solution 2   (Gap method)     */
-// Time complexity: O(log(n + m)) * O(n + m)
-// Space Complexity: O(1) 
-
-
-// class Solution{
-//     public:
-//         //Function to merge the arrays.
-//         void merge(long long arr1[], long long arr2[], int n, int m) 
-//         { 
-//             int gap = ceil((float)(n + m) / 2);
-//             while(gap > 0){
-//                 int i = 0; 
-//                 int j = gap;
-//                 while(j < n + m){
-//                     // arr1 and arr1
-//                     if(j < n && arr1[i] > arr1[j]){
-//                         swap(arr1[i], arr1[j]);
-//                     }
-//                     // arr1 and arr2
-//                     else if(j >= n && i < n && arr1[i] > arr2[j - n]){
-//                         swap(arr1[i], arr2[j - n]);
-//                     }
-//                     // arr2 and arr2
-//                     else if(j >= n && i >= n && arr2[i - n] > arr2[j - n]){
-//                         swap(arr2[i - n], arr2[j -n]);
-//                     }
-//                     i++;
-//                     j++;
-//                 }
-//                 if(gap == 1){
-//                     gap = 0;
-//                 }
-//                 else{
-//                     gap = ceil((float) gap / 2);
-//                 }
-//             }
-//         } 
-// };
+int main()
+{
+    vector<int> a = {2, 3, 5, 1, 9};
+    long long k = 10;
+    int len = getLongestSubarray(a, k);
+    cout << "The length of the longest subarray is: " << len << "\n";
+    return 0;
+}
