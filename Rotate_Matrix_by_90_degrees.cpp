@@ -2,11 +2,11 @@
 
 /* Problem Statement: You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
 You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. 
-DO NOT allocate another 2D matrix and do the rotation.  */
+DO NOT allocate another 2D matrix and do the rotation. */
 
 
 
-/* Solution 1:Brute force */
+/* Solution 1: Brute force */
 /* Approach: Take another dummy matrix of n*n, and then take the first row of the matrix and put it in the last 
 column of the dummy matrix, take the second row of the matrix, and put it in the second last column of the matrix and so. */
 // Time Complexity: O(N*N) 
