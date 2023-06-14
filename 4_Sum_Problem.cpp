@@ -28,7 +28,10 @@ Space Complexity: O(2*k)     // k is the no.of quads
 //             for(int j = i+1; j < n; j++){
 //                 for(int k = j+1; k < n; k++){
 //                     for(int l = k+1; l < n; l++){
-//                         int sum = nums[i] + nums[j] + nums[k] + nums[l];
+//                         long long sum = nums[i];
+//                         sum += nums[j];
+//                         sum += nums[k];
+//                         sum += nums[l];
 //                         if(sum == target){
 //                             vector<int> temp = {nums[i], nums[j], nums[k], nums[l]};
 //                             sort(temp.begin(), temp.end());
