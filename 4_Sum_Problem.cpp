@@ -142,7 +142,7 @@ Approach: Sort the array, and then fix two pointers, so the remaining sum will b
 
 Time Complexity: O(NlogN) + O(N^3) 
 Reason: There are 2 nested loops and the front pointer as well as the right pointer (Third nested loop)
-Space Complexity: O(2*k)     // k is the no.of quads 
+Space Complexity: O(k)     // k is the no.of quads 
 */
 
 
