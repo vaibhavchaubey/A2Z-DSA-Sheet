@@ -1,12 +1,11 @@
+/* Leetcode  Submission    (56. Merge Intervals) */
+
 /* Problem Statement: Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, 
 and return an array of the non-overlapping intervals that cover all the intervals in the input. */
 
 
-/* Leetcode  Submission    (56. Merge Intervals) */
-
-
 /* Solution 1: Brute Force    (It will give TLE) */
-// Time Complexity: O(NlogN) + O(N*N)
+// Time Complexity: O(NlogN) + O(2*N)
 // Space Complexity: O(N) to return the answer of the merged intervals.
 
 

@@ -1,8 +1,7 @@
+/* Codestudio  Submission    (Subarrays with XOR ‘K’) */
+
 /* Problem Statement: Given an array 'A' consisting of 'N' integers and an integer 'B', find the number of subarrays of 
 array 'A' whose bitwise XOR(^) of all elements is equal to 'B'. */
-
-
-/* Codestudio  Submission    (Subarrays with XOR ‘K’) */
 
 
 /* Solution 1: Brute Force    (It will give TLE) */
@@ -29,7 +28,7 @@ array 'A' whose bitwise XOR(^) of all elements is equal to 'B'. */
 
     
 /* Solution 2: Prefix xor and map */
-// Time Complexity: O(N)
+// Time Complexity: O(NlogN)
 // Space Complexity: O(N)     
 
 
