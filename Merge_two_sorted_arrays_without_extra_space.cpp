@@ -1,6 +1,4 @@
-/* Both Leetcode and GFG Submission below */
-
-
+/* Leetcode  Submission    (88. Merge Sorted Array) */
 
 /* Problem Statement: You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, 
 representing the number of elements in nums1 and nums2 respectively.
@@ -9,8 +7,6 @@ The final sorted array should not be returned by the function, but instead be st
 To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, 
 and the last n elements are set to 0 and should be ignored. nums2 has a length of n. */
 
-
-/* Leetcode  Submission    (88. Merge Sorted Array) */
 
 
 /* Solution 1: Brute Force   */
@@ -51,7 +47,6 @@ and the last n elements are set to 0 and should be ignored. nums2 has a length o
 // };
 
 
-
     
 /* Solution 2: Optimal Solution 1  */
 // Time complexity: O(NlogN) + O(n)         (N = n+m)
@@ -67,7 +62,6 @@ and the last n elements are set to 0 and should be ignored. nums2 has a length o
 //         sort(nums1.begin(), nums1.end());
 //     }
 // };
-
 
 
 
@@ -100,7 +94,7 @@ and the last n elements are set to 0 and should be ignored. nums2 has a length o
 //                 j++;
 //             }
 //             if(gap == 1){
-//                 gap = 0;
+//                 break;
 //             }
 //             else{
 //                 gap = ceil((float) gap / 2);
@@ -115,13 +109,12 @@ and the last n elements are set to 0 and should be ignored. nums2 has a length o
 
 
 
+/* GFG  Submission    (88. Merge Sorted Array) */
 
 /* Problem Statement: Given two sorted arrays arr1[] and arr2[] of sizes n and m in non-decreasing order. 
 Merge them in sorted order without using any extra space. Modify arr1 so that it contains the first N elements 
 and modify arr2 so that it contains the last M elements. */
 
-
-/* GFG  Submission    (88. Merge Sorted Array) */
 
 
 /* Solution 1: Brute Force   */
@@ -170,8 +163,6 @@ and modify arr2 so that it contains the last M elements. */
 
 
 
-
-    
 /* Solution 2: Optimal Solution 1 */
 // Time Complexity: O(min(n, m)) + O(n Log n) + O(m Log m)
 // Space Complexity: O(1) 
@@ -232,7 +223,7 @@ and modify arr2 so that it contains the last M elements. */
 //                     j++;
 //                 }
 //                 if(gap == 1){
-//                     gap = 0;
+//                     break;
 //                 }
 //                 else{
 //                     gap = ceil((float) gap / 2);
