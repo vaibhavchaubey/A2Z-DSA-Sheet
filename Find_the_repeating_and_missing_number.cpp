@@ -1,6 +1,6 @@
 /* GFG  Submission    (Find Missing And Repeating) */
 
-/* Given an unsorted array Arr of size N of positive integers. One number 'A' from set {1, 2,....,N} 
+/* Problem Statement: Given an unsorted array Arr of size N of positive integers. One number 'A' from set {1, 2,....,N} 
 is missing and one number 'B' occurs twice in array. Find these two numbers. */
 
 
@@ -50,7 +50,7 @@ is missing and one number 'B' occurs twice in array. Find these two numbers. */
 //         int repeating = -1, missing = -1;
 //         vector<int> freq(n+1, 0);
 //         for(int i = 0; i < n; i++){
-//             freq[arr[i]] += 1;
+//             freq[arr[i]]++;
 //         }
 
 //         for(int i = 1; i <= n; i++){
