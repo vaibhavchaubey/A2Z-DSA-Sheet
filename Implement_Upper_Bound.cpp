@@ -79,63 +79,35 @@ int ind = upper_bound(arr, arr + n, x) - arr;              for array      */
 
 /* GFG  Submission    (Ceil The Floor) */
 
-/* Problem Statement: Given an array of integers nums which is sorted in ascending order, and an integer target, 
-write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
-You must write an algorithm with O(log n) runtime complexity. */
+/* Problem Statement: Given an unsorted array Arr[] of N integers and an integer X, find floor and ceiling of X in Arr[0..N-1].
+Floor of X is the largest element which is smaller than or equal to X. Floor of X doesn’t exist if X is smaller than smallest 
+element of Arr[].
+Ceil of X is the smallest element which is greater than or equal to X. Ceil of X doesn’t exist if X is greater than greatest 
+element of Arr[]. */
 
 
-
-/* Solution 1: Brute Force   */
+/* Solution:  */
 // Time Complexity: O(N)
 // Space Complexity: O(1)
 
 
-// class Solution{
-//   public:
-//     // Function to find floor of x
-//     // n: size of vector
-//     // x: element whose floor is to find
-//     int findFloor(vector<long long> v, long long n, long long x){
-//         int ans = -1;
-//         for(int i = 0; i < n; i++){
-//             if(v[i] <= x){
-//                 ans = i;
-//             }
-//             else{
-//                 break;
-//             }
+// pair<int, int> getFloorAndCeil(int arr[], int n, int x) {
+//     int tempFloor = -1, floor = -1;
+//     int tempCeil = -1, ceil = INT_MAX;
+//     for(int i = 0; i < n; i++){
+//         if(arr[i] <= x){
+//             tempFloor = arr[i];
+//             floor = max(floor, tempFloor);
 //         }
-        
-//         return ans;
-//     }
-// };
-
-
-
-/* Solution 2: Optimal Approach   (Using Binary Search)   */
-// Time Complexity: O(logN)
-// Space Complexity: O(1)
-
-
-// class Solution{
-//   public:
-//     // Function to find floor of x
-//     // n: size of vector
-//     // x: element whose floor is to find
-//     int findFloor(vector<long long> v, long long n, long long x){
-//         int ans = -1;
-//         int low = 0, high = n-1;
-//         while(low <= high){
-//             int mid = low + (high - low) / 2;
-//             if(v[mid] <= x){
-//                 ans = mid;
-//                 low = mid + 1;
-//             }
-//             else{
-//                 high = mid - 1;
-//             }
+//         if(arr[i] >= x){
+//             tempCeil = arr[i];
+//             ceil = min(ceil, tempCeil);
 //         }
-        
-//         return ans;
 //     }
-// };
+    
+//     if(ceil == INT_MAX){
+//         ceil = -1;
+//     }
+    
+//     return {floor, ceil};
+// }
