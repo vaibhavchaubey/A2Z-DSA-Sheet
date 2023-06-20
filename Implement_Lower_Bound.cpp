@@ -78,9 +78,9 @@ int ind = lower_bound(arr, arr + n, x) - arr;              for array      */
 
 /* GFG  Submission    (Floor in a Sorted Array) */
 
-/* Problem Statement: Given an array of integers nums which is sorted in ascending order, and an integer target, 
-write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
-You must write an algorithm with O(log n) runtime complexity. */
+/* Problem Statement: Given a sorted array arr[] of size N without duplicates, and given a value x. 
+Floor of x is defined as the largest element K in arr[] such that K is smaller than or equal to x. 
+Find the index of K(0-based indexing). */
 
 
 
