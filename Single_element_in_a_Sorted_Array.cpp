@@ -1,9 +1,11 @@
-/* Leetcode  Submission    (540. Single Element in a Sorted Array) */
+/* Leetcode  Submission    (162. Find Peak Element) */
 
-/* Problem Statement: You are given a sorted array consisting of only integers where every element appears exactly twice, 
-except for one element which appears exactly once.
-Return the single element that appears only once.
-Your solution must run in O(log n) time and O(1) space. */
+/* Problem Statement: A peak element is an element that is strictly greater than its neighbors.
+Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, 
+return the index to any of the peaks.
+You may imagine that nums[-1] = nums[n] = -∞. In other words, an element is always considered to be strictly greater than a 
+neighbor that is outside the array.
+You must write an algorithm that runs in O(log n) time. */
 
 
 /* Solution 1: Brute Force   */
@@ -13,124 +15,56 @@ Your solution must run in O(log n) time and O(1) space. */
 
 // class Solution {
 // public:
-//     int singleNonDuplicate(vector<int>& nums) {
+//     int findPeakElement(vector<int>& nums) {
 //         int n = nums.size();
-//         if(n == 1){
-//             return nums[0];
-//         }
 //         for(int i = 0; i < n; i++){
-//             if(i == 0){
-//                 if(nums[i] != nums[i+1]){
-//                     return nums[i];
-//                 }
-//             }
-//             else if(i == n-1){
-//                 if(nums[i] != nums[i-1]){
-//                     return nums[i];
-//                 }
-//             }
-//             else{
-//                 if(nums[i] != nums[i-1] && nums[i] != nums[i+1]){
-//                     return nums[i];
-//                 }
+//             if((i == 0 || nums[i-1] < nums[i]) && (i == n-1 || nums[i] > nums[i+1])){
+//                 return i;
 //             }
 //         }
-        
+
 //         return -1;
 //     }
 // };
 
 
-/* Solution 2: XOR Approach: */
-// Time Complexity: O(N)
-// Space Complexity: O(1) 
 
-
-/* XOR Property */
-// XOR of same number is 0   (2 ^ 2 = 0)
-// XOR of any number with 0 is the number itself     (0 ^ 2 = 2)
-
-
-// class Solution {
-// public:
-//     int singleNonDuplicate(vector<int>& nums) {
-//         int n = nums.size();
-//         int XOR = 0;
-//         for(int i = 0; i < n; i++){
-//             XOR ^= nums[i];
-//         }
-
-//         return XOR;
-//     }
-// };
-
-
-
-
-
-/* Solution 3: Optimal Approach   (Using Binary Search)   */
+/* Solution 2: Optimal Approach   (Using Binary Search)   */
 // Time Complexity: O(logN)
 // Space Complexity: O(1)
 
 
 // class Solution {
 // public:
-//     int singleNonDuplicate(vector<int>& nums) {
+//     int findPeakElement(vector<int>& nums) {
 //         int n = nums.size();
-//         int low = 0, high = n-1;
-//         while(low < high){
+//         // single element
+//         if(n == 1) return 0; 
+
+//         // check if 0th/n-1th index is the peak element
+//         if(nums[0] > nums[1]) return 0;
+//         if(nums[n-1] > nums[n-2]) return n-1;
+
+//         // search in the remaining array
+//         int low = 1, high = n-2;
+//         while(low <= high){
 //             int mid = low + (high - low) / 2;
-//             // even, odd   (Element is in the right half)
-//             if((mid % 2 == 0 && nums[mid] == nums[mid+1]) || (mid % 2 != 0 && nums[mid] == nums[mid-1])){          
+//             if(nums[mid] > nums[mid-1] && nums[mid] > nums[mid+1]){
+//                 return mid;
+//             } 
+
+//             // mid on the increasing path that means our ans will be in right
+//             else if(nums[mid] > nums[mid-1]){
 //                 low = mid + 1;
 //             }
-            
-//             // odd, even   (Element is in the left half)
-//             // high = mid  is done, to also handle case when nums[mid-1] != nums[mid] != nums[mid+1]
-//             else{
-//                 high = mid;
-//             }
-//         }
 
-//         return nums[low];
-//     }
-// };
-
-
-/* OR */
-
-
-// class Solution {
-// public:
-//     int singleNonDuplicate(vector<int>& nums) {
-//         int n = nums.size();
-//         int low = 0, high = n-1;
-//         while(low < high){
-//             int mid = low + (high - low) / 2;
-//             // odd, even   (Element is in the left half)
-//             if(mid % 2 == 0 && nums[mid] == nums[mid-1]){       
-//                 high = mid - 2;
-//             }
-//             // even, odd   (Element is in the right half)
-//             else if(mid % 2 == 0 && nums[mid] == nums[mid+1]){          
-//                 low = mid + 2;
-//             }
-//             // even, odd   (Element is in the right half)
-//             else if(mid % 2 != 0 && nums[mid] == nums[mid-1]){      
-//                 low = mid + 1;
-//             }
-//             // odd, even   (Element is in the left half)
-//             else if(mid % 2 != 0 && nums[mid] == nums[mid+1]){      
+//             // mid is on the decreasing path  peak will be on left side
+//             // also handle the case when  nums[mid-1]  > nums[mid] < nums[mid+1]
+//             else{                           // if(nums[mid] > nums[mid-1])
 //                 high = mid - 1;
 //             }
-//             else{
-//                 return nums[mid];
-//             }
 //         }
 
-//         return nums[low];
+//         return -1;
 //     }
 // };
-
-
-
