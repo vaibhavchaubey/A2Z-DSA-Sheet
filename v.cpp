@@ -1,47 +1,62 @@
-// #include <bits/stdc++.h>
-// using namespace std;
-// int calcHour(int k, int n, vector<int>& v){
-//     long long totalHour = 0;
-//     for(int i = 0; i < n; i++){
-//     // totalHour += ceil((v[i] * 1.0) / k);
-//     totalHour += ceil((double)v[i] / (double)k);
-//     }
+#include <bits/stdc++.h>
+using namespace std;
+int calc(int day, int k, int n, vector<int> &bloomDay)
+{
+    int num = 0;
+    int i = 0;
+    while (i < n)
+    {
+        if (i + k - 1 < n)
+        {
+            bool isPossible = true;
+            for (int j = 0; j < k; j++)
+            {
+                if (bloomDay[i + j] > day)
+                {
+                    isPossible = false;
+                    break;
+                }
+            }
+            if (isPossible)
+            {
+                num++;
+                i += k;
+            }
+            else
+            {
+                i++;
+            }
+        }
+    }
 
-//     return totalHour;
-// }
-// int minimumRateToEatBananas(vector<int> v, int h) {
-//     int n = v.size();
-//     // long long ans = -1;
-//     long long maxEle = *max_element(v.begin(), v.end());
-//     long long low = 1, high = maxEle;
+    return num;
+}
+int minDays(vector<int> &bloomDay, int m, int k)
+{
+    int n = bloomDay.size();
+    int maxEle = *max_element(bloomDay.begin(), bloomDay.end());
+    for (int i = 1; i <= maxEle; i++)
+    {
+        int num = calc(i, k, n, bloomDay);
+        if (num == m)
+        {
+            return i;
+        }
+    }
 
-//     while(low <= high){
-//         long long mid = low + (high - low) / 2;
-//         int reqTime = calcHour(mid, n, v);
-//         if(reqTime <= h){
-//             // ans = mid;
-//             high = mid - 1;
-//         }
-//         else {                      // if(reqTime > h)
-//             low = mid + 1;
-//         }
-//     }
+    return -1;
+}
 
-//     return low;
-// }
+int main()
+{
+    vector<int> v = {7, 7, 7, 7, 12, 7, 7};
+    int m = 2, k = 3;
 
-// int mian(){
-//     vector<int> v = {3,6,7,11};
-//     int h = 8;
+    cout<<"Hello";
 
-//     int ans = minimumRateToEatBananas(v, h);
+    int ans = minDays(v, m, k);
 
-//     count<<ans;
+    cout << ans;
 
-
-
-
-
-
-//     return 0;   
-// }
+    return 0;
+}
